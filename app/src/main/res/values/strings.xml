@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">pr15</string>
+    <string name="correct_toast">Правильно</string>
+    <string name="incorrect_toast">Не правильно</string>
+
+    <string name="a">В Dota 2 есть режим одиночной игры без других игроков?</string>
+    <string name="b">Можно ли улучшить героев в Dota 2 с помощью предметов?</string>
+    <string name="c">В Dota 2 есть возможность выбора героя перед началом матча?</string>
+    <string name="d">В Dota 2 существует функция быстрой покупки предметов для героя?</string>
+    <string name="h">B Dota 2 игроки могут общаться с членами своей команды по голосовой связи?</string>
+    <string name="r">Умеешь играть?</string>
+    <string name="j">У тебя 1к?</string>
+    <string name="vvodLog">Введите \'Логин\'</string>
+    <string name="vvodPass">Введите \'Пароль\'</string>
+    <string name="logins">Войти</string>
+    <string name="hello">Здравствуйте. Войдите в аккаунт</string>
+
+</resources>
