@@ -8,10 +8,14 @@ import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var questions: Array<String>
     private var currentQuestionIndex = 0
     private lateinit var trueButton: Button
     private lateinit var falseButton: Button
+    private lateinit var rightButton: Button
+    private lateinit var leftButton: Button
+    private lateinit var questionTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +31,11 @@ class MainActivity : AppCompatActivity() {
             getString(R.string.j)
         )
 
-        trueButton = findViewById<Button>(R.id.true_button)
-        falseButton = findViewById<Button>(R.id.false_button)
+        trueButton = findViewById(R.id.true_button)
+        falseButton = findViewById(R.id.false_button)
+        rightButton = findViewById(R.id.rightb)
+        leftButton = findViewById(R.id.leftb)
+        questionTextView = findViewById(R.id.question_text_view)
 
         trueButton.setOnClickListener {
             checkAnswer(true)
@@ -40,8 +47,15 @@ class MainActivity : AppCompatActivity() {
             updateQuestion()
         }
 
-        updateQuestion()
+        rightButton.setOnClickListener {
+            updateQuestionIndex(1)
+        }
 
+        leftButton.setOnClickListener {
+            updateQuestionIndex(-1)
+        }
+
+        updateQuestion()
     }
 
     private fun checkAnswer(isTrue: Boolean) {
@@ -50,9 +64,10 @@ class MainActivity : AppCompatActivity() {
         val messageResId = if (isCorrect) R.string.correct_toast else R.string.incorrect_toast
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
     }
+
     private fun getCorrectAnswer(): Boolean {
         val correctAnswers = booleanArrayOf(
-            false,
+            false, // ответ на первый вопрос
             true,  // ответ на второй вопрос
             true, // ответ на третий вопрос
             true,  // ответ на четвертый вопрос
@@ -66,13 +81,27 @@ class MainActivity : AppCompatActivity() {
     private fun updateQuestion() {
         currentQuestionIndex++
         if (currentQuestionIndex < questions.size) {
-            val questionText = questions[currentQuestionIndex]
-            val questionTextView = findViewById<TextView>(R.id.question_text_view)
-            questionTextView.text = questionText
+            questionTextView.text = questions[currentQuestionIndex]
         } else {
             trueButton.isEnabled = false
             falseButton.isEnabled = false
             Toast.makeText(this, "Тест завершен", Toast.LENGTH_SHORT).show()
         }
     }
+
+    private fun updateQuestionIndex(increment: Int) {
+        currentQuestionIndex += increment
+        if (currentQuestionIndex >= questions.size) {
+            currentQuestionIndex = 0
+        } else if (currentQuestionIndex < 0) {
+            currentQuestionIndex = questions.size - 1
+        }
+        questionTextView.text = questions[currentQuestionIndex]
+    }
+    private fun showToast(message: String) {
+        val toast = Toast.makeText(this, message, Toast.LENGTH_SHORT)
+        toast.duration = Toast.LENGTH_SHORT
+        toast.show()
+    }
+
 }

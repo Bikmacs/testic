@@ -32,9 +32,9 @@
             android:layout_width="200dp"
             android:layout_height="60sp"
             android:backgroundTint="@color/white"
-            android:text="@string/vvodLog"
+            android:hint="@string/vvodLog"
+            android:textColorHint="@color/white"
             android:textColor="@color/white" />
-
         <EditText
             android:id="@+id/password_edit_text"
             android:layout_marginTop="60sp"
@@ -43,17 +43,18 @@
             android:layout_height="60sp"
             android:textColor="@color/white"
             android:backgroundTint="@color/white"
-            android:text="@string/vvodPass"/>
+            android:hint="@string/vvodPass"
+            android:textColorHint="@color/white" />
+
     </LinearLayout>
 
     <Button
         android:id="@+id/button"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="50sp"
-        android:layout_marginLeft="50dp"
-        android:backgroundTint="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:text="@string/logins"/>
+        android:text="@string/logins"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
